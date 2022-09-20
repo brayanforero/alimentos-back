@@ -20,7 +20,7 @@ app.use(morgan(MORGAN_MODE))
 app.use(cookieParser(COOKIE_SECRET))
 
 // API
-app.get('/v1/', routerV1)
+app.use('/v1/', routerV1)
 
 // HANDLERS ERRORS
 app.get('*', error404)

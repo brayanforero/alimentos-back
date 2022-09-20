@@ -1,7 +1,7 @@
 import { Router } from 'express'
 
 const routerV1 = Router()
-routerV1.use('/', (_req, res) => {
+routerV1.get('/', (_req, res) => {
   res.send('WELCOME')
 })
 
