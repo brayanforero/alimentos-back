@@ -1,0 +1,40 @@
+{
+  "name": "api-clap-comunity",
+  "version": "0.0.1",
+  "description": "Api clap system for peoples in san juan de colon",
+  "main": "index.js",
+  "type": "module",
+  "engineStrict": true,
+  "engines": {
+    "node": ">=16.17.0",
+    "npm": ">=8.15.0"
+  },
+  "scripts": {
+    "start": "node ./src/bin/www.js",
+    "dev": "nodemon ./src/bin/www.js"
+  },
+  "keywords": [
+    "API",
+    "node",
+    "javascript",
+    "express",
+    "backend"
+  ],
+  "author": "Brayan Forero <bforero.engineer@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "8.23.1",
+    "eslint-config-standard": "17.0.0",
+    "eslint-plugin-import": "2.26.0",
+    "eslint-plugin-n": "15.2.5",
+    "eslint-plugin-promise": "6.0.1",
+    "nodemon": "2.0.20",
+    "prettier": "2.7.1"
+  },
+  "dependencies": {
+    "cookie-parser": "1.4.6",
+    "dotenv": "16.0.2",
+    "express": "4.18.1",
+    "morgan": "1.10.0"
+  }
+}
