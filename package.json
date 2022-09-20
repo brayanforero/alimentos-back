@@ -21,6 +21,7 @@
     "backend"
   ],
   "author": "Brayan Forero <bforero.engineer@gmail.com>",
+  "repositorio": "git@github.com:brayanforero/alimentos-back.git", 
   "license": "MIT",
   "devDependencies": {
     "eslint": "8.23.1",
