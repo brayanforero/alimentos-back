@@ -1,5 +1,14 @@
 import { APP_URL } from '../config/default.js'
 import app from '../app.js'
-app.listen(app.get('PORT'), () => {
+import Store from '../database/store.js'
+
+app.listen(app.get('PORT'), async () => {
   console.log(`Server listening on ${APP_URL}:${app.get('PORT')}`)
+
+  try {
+    await Store.authenticate()
+    console.log('Connection has been established successfully.')
+  } catch (error) {
+    console.error('Unable to connect to the database:', { ...error })
+  }
 })

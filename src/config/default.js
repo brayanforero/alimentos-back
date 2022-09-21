@@ -12,16 +12,3 @@ export const DB_NAME = process.env.MYSQL_ADDON_DB || 'clap'
 export const DB_USER = process.env.MYSQL_ADDON_USER || 'root'
 export const DB_PORT = process.env.MYSQL_ADDON_PORT || '3306'
 export const DB_PASSWORD = process.env.MYSQL_ADDON_PASSWORD || ''
-
-console.log({
-  APP_URL,
-  PORT,
-  MODE,
-  COOKIE_SECRET,
-  MORGAN_MODE,
-  DB_HOST,
-  DB_NAME,
-  DB_USER,
-  DB_PORT,
-  DB_PASSWORD,
-})

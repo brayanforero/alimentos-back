@@ -10,8 +10,8 @@
     "npm": ">=8.15.0"
   },
   "scripts": {
-    "start": "node ./src/bin/www.js",
-    "dev": "nodemon ./src/bin/www.js"
+    "start": "node --trace-deprecation ./src/bin/www.js",
+    "dev": "nodemon --trace-deprecation ./src/bin/www.js"
   },
   "keywords": [
     "API",
@@ -21,7 +21,7 @@
     "backend"
   ],
   "author": "Brayan Forero <bforero.engineer@gmail.com>",
-  "repositorio": "git@github.com:brayanforero/alimentos-back.git", 
+  "repositorio": "git@github.com:brayanforero/alimentos-back.git",
   "license": "MIT",
   "devDependencies": {
     "eslint": "8.23.1",
@@ -36,6 +36,8 @@
     "cookie-parser": "1.4.6",
     "dotenv": "16.0.2",
     "express": "4.18.1",
-    "morgan": "1.10.0"
+    "morgan": "1.10.0",
+    "mysql2": "2.3.3",
+    "sequelize": "6.23.0"
   }
 }
