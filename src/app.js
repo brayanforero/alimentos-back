@@ -23,7 +23,7 @@ app.use(cookieParser(COOKIE_SECRET))
 app.use('/v1/', routerV1)
 
 // HANDLERS ERRORS
-app.get('*', error404)
+app.use(error404)
 app.use(errorServerInternal)
 
 export default app

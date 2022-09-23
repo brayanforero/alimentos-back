@@ -1,7 +1,14 @@
 export const error404 = (_req, res) => {
-  res.send('404 NOT FOUND').status(404)
+  const { headers } = _req
+
+  if (headers['content-type'] === 'application/json')
+    return res.status(404).json({
+      body: 'Not Found',
+    })
+
+  res.status(404).end()
 }
 
 export const errorServerInternal = (err, _req, res) => {
-  res.send(JSON.stringify(err)).status(500)
+  res.status(500).json(err)
 }
