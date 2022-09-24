@@ -1,5 +1,6 @@
 import { DataTypes } from 'sequelize'
 import Store from '../../database/store.js'
+import User from '../users/models.js'
 
 const model = Store
 
@@ -62,5 +63,7 @@ const Member = model.define(
     },
   }
 )
+
+Member.hasOne(User)
 
 export default Member
