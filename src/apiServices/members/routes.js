@@ -7,7 +7,7 @@ import {
   getAllMembers,
   getByDiMember,
   updateMember,
-} from './controller.js'
+} from './Member.Controller.js'
 
 const router = Router()
 

@@ -1,8 +1,9 @@
-import Member from './models.js'
+import User from './User.Model.js'
 
-export const getAllMembers = async (_req, res, _next) => {
+//TODO: Finish all controllers with relationships User - Member
+export const getAllUsers = async (_req, res, _next) => {
   try {
-    const { count, rows } = await Member.findAndCountAll({
+    const { count, rows } = await User.findAndCountAll({
       where: {
         state: true,
       },
@@ -15,13 +16,13 @@ export const getAllMembers = async (_req, res, _next) => {
     res.status(500).json(err)
   }
 }
-export const getByDiMember = async (_req, res, _next) => {
-  const { document_id } = _req.params
+export const getUserById = async (_req, res, _next) => {
+  const { id } = _req.params
 
   try {
     const member = await Member.findOne({
       where: {
-        cedula: document_id,
+        id,
         state: true,
       },
     })
@@ -35,7 +36,7 @@ export const getByDiMember = async (_req, res, _next) => {
     res.status(500).json(err)
   }
 }
-export const addMember = async (_req, res, _next) => {
+export const addUser = async (_req, res, _next) => {
   const { body } = _req
 
   try {
@@ -49,7 +50,7 @@ export const addMember = async (_req, res, _next) => {
   }
 }
 
-export const updateMember = async (_req, res, _next) => {
+export const updateUser = async (_req, res, _next) => {
   const { body } = _req
   try {
     const member = await Member.findOne({
@@ -71,7 +72,7 @@ export const updateMember = async (_req, res, _next) => {
     res.status(500).json(err)
   }
 }
-export const deleteMember = async (_req, res, _next) => {
+export const deleteUser = async (_req, res, _next) => {
   const { id } = _req.params
   try {
     const member = await Member.findOne({

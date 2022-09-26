@@ -1,6 +1,5 @@
 import { DataTypes } from 'sequelize'
 import Store from '../../database/store.js'
-import Member from '../members/models.js'
 const model = Store
 
 const User = model.define(
@@ -28,14 +27,6 @@ const User = model.define(
     state: {
       type: DataTypes.BOOLEAN,
     },
-    member_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: Member,
-        key: 'id',
-        deferrable: Deferrable.INITIALLY_IMMEDIATE,
-      },
-    },
   },
   {
     createdAt: 'created_at',
@@ -53,7 +44,5 @@ const User = model.define(
     },
   }
 )
-
-User.belongsTo(Member)
 
 export default User
