@@ -1,5 +1,6 @@
 import { DataTypes } from 'sequelize'
 import Store from '../../database/store.js'
+import User from '../users/User.Model.js'
 
 const model = Store
 
@@ -62,5 +63,15 @@ const Member = model.define(
     },
   }
 )
+
+Member.hasOne(User, {
+  foreignKey: 'member_id',
+  sourceKey: 'id',
+})
+
+User.belongsTo(Member, {
+  foreignKey: 'member_id',
+  targetKey: 'id',
+})
 
 export default Member

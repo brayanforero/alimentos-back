@@ -1,5 +1,6 @@
 import { DataTypes } from 'sequelize'
 import Store from '../../database/store.js'
+
 const model = Store
 
 const User = model.define(
@@ -22,6 +23,10 @@ const User = model.define(
     },
     is_master: {
       type: DataTypes.BOOLEAN,
+      allowNull: false,
+    },
+    member_id: {
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
     state: {
