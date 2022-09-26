@@ -1,13 +1,13 @@
 import { Router } from 'express'
 import catchValidatorError from '../../middlewares/catchValidatorError.js'
-import requestUser from './request.js'
+import requestUser from './User.Request.js'
 import {
   addUser,
   deleteUser,
   getAllUsers,
   getUserById,
   updateUser,
-} from './controller.js'
+} from './User.Controller.js'
 
 const router = Router()
 

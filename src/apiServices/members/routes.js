@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import requestMember from './request.js'
+import requestMember from './Member.Request.js'
 import catchValidatorError from '../../middlewares/catchValidatorError.js'
 import {
   addMember,

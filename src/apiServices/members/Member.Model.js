@@ -39,7 +39,7 @@ const Member = model.define(
       type: DataTypes.BOOLEAN,
     },
     state: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.BOOLEAN,
     },
   },
   {
