@@ -64,7 +64,7 @@ const Member = model.define(
   }
 )
 
-Member.hasOne(User, {
+Member.hasMany(User, {
   foreignKey: 'member_id',
   sourceKey: 'id',
 })
