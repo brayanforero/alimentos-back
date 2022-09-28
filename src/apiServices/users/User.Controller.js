@@ -1,6 +1,13 @@
 import User from './User.Model.js'
 import Member from '../members/Member.Model.js'
 import { hash } from '../../utils/bhash.js'
+import {
+  CREATED,
+  NOT_FOUND,
+  OK,
+  SERVER_INTERNAL_ERROR,
+} from '../../utils/http.codes.js'
+
 export const getAllUsers = async (_req, res, _next) => {
   try {
     const { count, rows } = await User.findAndCountAll({
@@ -14,11 +21,10 @@ export const getAllUsers = async (_req, res, _next) => {
       },
     })
     res.json({
-      status: 200,
       body: { count: count, values: rows },
     })
   } catch (err) {
-    res.status(500).json(err)
+    res.status(SERVER_INTERNAL_ERROR).json(err)
   }
 }
 export const getUserById = async (_req, res, _next) => {
@@ -36,14 +42,13 @@ export const getUserById = async (_req, res, _next) => {
         state: true,
       },
     })
-    const code = member ? 200 : 404
+    const code = member ? OK : NOT_FOUND
     const body = member || 'Member not found'
     res.status(code).json({
-      status: code,
       body,
     })
   } catch (err) {
-    res.status(500).json(err)
+    res.status(SERVER_INTERNAL_ERROR).json(err)
   }
 }
 export const addUser = async (_req, res, _next) => {
@@ -57,12 +62,11 @@ export const addUser = async (_req, res, _next) => {
       member_id,
       is_master,
     })
-    res.status(201).json({
-      status: 201,
+    res.status(CREATED).json({
       body: user,
     })
   } catch (err) {
-    res.status(500).json(err)
+    res.status(SERVER_INTERNAL_ERROR).json(err)
   }
 }
 
@@ -76,8 +80,7 @@ export const updateUser = async (_req, res, _next) => {
       },
     })
 
-    if (!user)
-      return res.status(400).json({ status: 400, body: 'Expected id valid' })
+    if (!user) return res.status(NOT_FOUND).json({ body: 'Expected id valid' })
 
     const { username, password, member_id, is_master } = body
     const passwordEncrypted = await hash(password)
@@ -88,12 +91,11 @@ export const updateUser = async (_req, res, _next) => {
       member_id,
       is_master,
     })
-    res.status(200).json({
-      status: 200,
+    res.json({
       body: user,
     })
   } catch (err) {
-    res.status(500).json(err)
+    res.status(SERVER_INTERNAL_ERROR).json(err)
   }
 }
 export const deleteUser = async (_req, res, _next) => {
@@ -106,15 +108,13 @@ export const deleteUser = async (_req, res, _next) => {
       },
     })
 
-    if (!user)
-      return res.status(400).json({ status: 400, body: 'Expected id valid' })
+    if (!user) return res.status(NOT_FOUND).json({ body: 'Expected id valid' })
 
     await user.update({ state: false })
-    res.status(200).json({
-      status: 200,
+    res.json({
       body: 'User deleted',
     })
   } catch (err) {
-    res.status(500).json(err)
+    res.status(SERVER_INTERNAL_ERROR).json(err)
   }
 }

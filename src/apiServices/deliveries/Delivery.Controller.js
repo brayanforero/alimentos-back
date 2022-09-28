@@ -1,15 +1,20 @@
 import Delivery from './delivery.model.js'
 import { v1 as uuid } from 'uuid'
+import {
+  CREATED,
+  NOT_FOUND,
+  SERVER_INTERNAL_ERROR,
+} from '../../utils/http.codes.js'
+
 export const getAllDelivery = async (_req, res) => {
   try {
     const { count, rows } = await Delivery.findAndCountAll()
 
     res.json({
-      status: 200,
       body: { count, values: rows },
     })
   } catch (err) {
-    res.status(500).json(err)
+    res.status(SERVER_INTERNAL_ERROR).json(err)
   }
 }
 
@@ -18,15 +23,15 @@ export const addDelivery = async (req, res) => {
     const count = await Delivery.count({ where: { state: true } })
 
     if (count > 0)
-      return res.status(400).json({ body: 'Exists a Delivery open' })
+      return res.status(NOT_FOUND).json({ body: 'Exists a Delivery open' })
 
     const delivery = await Delivery.create({ code: uuid() })
 
-    res.status(201).json({
+    res.status(CREATED).json({
       body: delivery,
     })
   } catch (err) {
-    res.status(500).json(err)
+    res.status(SERVER_INTERNAL_ERROR).json(err)
   }
 }
 
@@ -35,7 +40,8 @@ export const closeDelivery = async (req, res) => {
   try {
     const delivery = await Delivery.findByPk(id)
 
-    if (!delivery) return res.status(404).json({ body: 'Delivery not found' })
+    if (!delivery)
+      return res.status(NOT_FOUND).json({ body: 'Delivery not found' })
 
     delivery.update({ state: false })
 
@@ -43,6 +49,6 @@ export const closeDelivery = async (req, res) => {
       body: delivery,
     })
   } catch (err) {
-    res.status(500).json(err)
+    res.status(SERVER_INTERNAL_ERROR).json(err)
   }
 }

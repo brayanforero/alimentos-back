@@ -1,3 +1,4 @@
+import { NOT_FOUND, OK, SERVER_INTERNAL_ERROR } from '../../utils/http.codes.js'
 import Member from './Member.Model.js'
 
 export const getAllMembers = async (_req, res, _next) => {
@@ -8,13 +9,13 @@ export const getAllMembers = async (_req, res, _next) => {
       },
     })
     res.json({
-      status: 200,
       body: { count: count, values: rows },
     })
   } catch (err) {
-    res.status(500).json(err)
+    res.status(SERVER_INTERNAL_ERROR).json(err)
   }
 }
+
 export const getByDiMember = async (_req, res, _next) => {
   const { document_id } = _req.params
 
@@ -25,16 +26,17 @@ export const getByDiMember = async (_req, res, _next) => {
         state: true,
       },
     })
-    const code = member ? 200 : 404
+    const code = member ? OK : NOT_FOUND
     const body = member ? { values: member } : 'Member not found'
     res.status(code).json({
       status: code,
       body,
     })
   } catch (err) {
-    res.status(500).json(err)
+    res.status(SERVER_INTERNAL_ERROR).json(err)
   }
 }
+
 export const addMember = async (_req, res, _next) => {
   const { body } = _req
 
@@ -45,7 +47,7 @@ export const addMember = async (_req, res, _next) => {
       body: member,
     })
   } catch (err) {
-    res.status(500).json(err)
+    res.status(SERVER_INTERNAL_ERROR).json(err)
   }
 }
 
@@ -63,14 +65,14 @@ export const updateMember = async (_req, res, _next) => {
       return res.status(400).json({ status: 400, body: 'Expected id valid' })
 
     await member.update(body)
-    res.status(200).json({
-      status: 200,
+    res.json({
       body: member,
     })
   } catch (err) {
-    res.status(500).json(err)
+    res.status(SERVER_INTERNAL_ERROR).json(err)
   }
 }
+
 export const deleteMember = async (_req, res, _next) => {
   const { id } = _req.params
   try {
@@ -85,11 +87,10 @@ export const deleteMember = async (_req, res, _next) => {
       return res.status(400).json({ status: 400, body: 'Expected id valid' })
 
     await member.update({ state: false })
-    res.status(200).json({
-      status: 200,
+    res.json({
       body: 'Member deleted',
     })
   } catch (err) {
-    res.status(500).json(err)
+    res.status(SERVER_INTERNAL_ERROR).json(err)
   }
 }
