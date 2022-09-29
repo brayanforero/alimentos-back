@@ -1,4 +1,4 @@
-import Delivery from './delivery.model.js'
+import Delivery from './Delivery.Model.js'
 import { v1 as uuid } from 'uuid'
 import {
   CREATED,
