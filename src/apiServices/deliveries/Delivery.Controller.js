@@ -1,4 +1,5 @@
 import Delivery from './Delivery.Model.js'
+import Member from '../members/Member.Model.js'
 import { v1 as uuid } from 'uuid'
 import {
   CREATED,
@@ -8,7 +9,29 @@ import {
 
 export const getAllDelivery = async (_req, res) => {
   try {
-    const { count, rows } = await Delivery.findAndCountAll()
+    const { count, rows } = await Delivery.findAndCountAll({
+      include: [
+        {
+          model: Member,
+          as: 'payers',
+          attributes: ['cedula', 'names', 'lastnames'],
+          through: {
+            as: 'pay',
+            attributes: [
+              'id',
+              'delivery_id',
+              'member_id',
+              'is_paid',
+              'mount',
+              'currency',
+            ],
+          },
+        },
+      ],
+      where: {
+        state: true,
+      },
+    })
 
     res.json({
       body: { count, values: rows },

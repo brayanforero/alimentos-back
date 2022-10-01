@@ -14,6 +14,7 @@ export const getAllUsers = async (_req, res, _next) => {
       attributes: ['id', 'username', 'is_master', 'state'],
       include: {
         model: Member,
+        as: 'member',
         attributes: ['cedula', 'names', 'lastnames'],
       },
       where: {
@@ -34,7 +35,7 @@ export const getUserById = async (_req, res, _next) => {
     const member = await User.findOne({
       attributes: ['id', 'username', 'is_master', 'state'],
       include: {
-        model: Member,
+        model: 'member',
         attributes: ['cedula', 'names', 'lastnames'],
       },
       where: {

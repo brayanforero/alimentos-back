@@ -67,11 +67,13 @@ const Member = model.define(
 Member.hasMany(User, {
   foreignKey: 'member_id',
   sourceKey: 'id',
+  as: 'user',
 })
 
 User.belongsTo(Member, {
   foreignKey: 'member_id',
   targetKey: 'id',
+  as: 'member',
 })
 
 export default Member
