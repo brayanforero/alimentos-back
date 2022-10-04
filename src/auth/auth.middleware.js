@@ -2,7 +2,7 @@ import jwt from 'jsonwebtoken'
 import User from '../apiServices/users/User.Model.js'
 import { SECRET_KEY } from '../config/default.js'
 import { hashVerify } from '../utils/bhash.js'
-import { OK, SERVER_INTERNAL_ERROR, UNAUTHORIZED } from '../utils/http.codes.js'
+import { SERVER_INTERNAL_ERROR, UNAUTHORIZED } from '../utils/http.codes.js'
 
 export const validateUser = async (req, res, next) => {
   const { body } = req
@@ -33,10 +33,16 @@ export const validateUser = async (req, res, next) => {
 
 export const validateToken = async (req, res, _next) => {
   const bearerToken = req.headers['authorization']
-  const token = bearerToken.split(' ').at(1)
+
+  if (!bearerToken) {
+    return res.status(UNAUTHORIZED).json({ body: 'No provided token' })
+  }
 
   try {
-    const decoded = jwt.verify(token, SECRET_KEY)
+    const token = bearerToken.split(' ').at(1)
+    const { user } = jwt.verify(token, SECRET_KEY)
+
+    req.user = user
     next()
   } catch (err) {
     res.status(SERVER_INTERNAL_ERROR).json({ body: err })
