@@ -6,7 +6,7 @@ export const PORT = process.env.PORT || 4000
 export const MODE = process.env.ENV
 export const COOKIE_SECRET = process.env.COOKIE_SECRET || 'elojodeagamoto'
 export const MORGAN_MODE = MODE === 'production' ? 'combined' : 'dev'
-
+export const SECRET_KEY = process.env.JWT_KEY ?? 'dsfsdf12323ASFD$%&%$'
 export const DB_HOST = process.env.MYSQL_ADDON_HOST || '127.0.0.1'
 export const DB_NAME = process.env.MYSQL_ADDON_DB || 'clap'
 export const DB_USER = process.env.MYSQL_ADDON_USER || 'root'
