@@ -40,11 +40,9 @@ const User = model.define(
     hooks: {
       beforeCreate: ({ dataValues }, _options) => {
         dataValues.username = dataValues.username.toUpperCase()
-        dataValues.password = dataValues.password.toUpperCase()
       },
       beforeUpdate: ({ dataValues }, _options) => {
         dataValues.username = dataValues.username.toUpperCase()
-        dataValues.password = dataValues.password.toUpperCase()
       },
     },
   }

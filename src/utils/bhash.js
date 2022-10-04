@@ -1,11 +1,11 @@
 import bcrypt from 'bcryptjs'
-export const hash = async (string) => {
-  const salt = await bcrypt.genSalt(10)
-  const hash = await bcrypt.hashSync(string, salt)
-  return hash || null
+export const hashGenerate = (string) => {
+  const salt = bcrypt.genSaltSync(10)
+  const hash = bcrypt.hashSync(string, salt)
+  return hash
 }
 
-export const hashVerify = async (string, hash) => {
-  const isValid = bcrypt.compare(string, hash)
-  return isValid
+export const hashVerify = (string, hash) => {
+  const match = bcrypt.compareSync(string, hash)
+  return match
 }

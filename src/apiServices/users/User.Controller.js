@@ -1,6 +1,6 @@
 import User from './User.Model.js'
 import Member from '../members/Member.Model.js'
-import { hash } from '../../utils/bhash.js'
+import { hashGenerate } from '../../utils/bhash.js'
 import {
   CREATED,
   NOT_FOUND,
@@ -55,7 +55,7 @@ export const getUserById = async (_req, res, _next) => {
 export const addUser = async (_req, res, _next) => {
   const { username, password, member_id, is_master } = _req.body
 
-  const passwordEncrypted = await hash(password)
+  const passwordEncrypted = hashGenerate(password)
   try {
     const user = await User.create({
       username,
@@ -84,7 +84,7 @@ export const updateUser = async (_req, res, _next) => {
     if (!user) return res.status(NOT_FOUND).json({ body: 'Expected id valid' })
 
     const { username, password, member_id, is_master } = body
-    const passwordEncrypted = await hash(password)
+    const passwordEncrypted = hashGenerate(password)
 
     await user.update({
       username,
