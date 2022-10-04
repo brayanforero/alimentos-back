@@ -8,14 +8,27 @@ import {
   getByDiMember,
   updateMember,
 } from './Member.Controller.js'
+import { validateToken } from '../../auth/auth.middleware.js'
 
 const router = Router()
 
 router
-  .get('/members', getAllMembers)
-  .get('/members/:document_id', getByDiMember)
-  .post('/members', requestMember, catchValidatorError, addMember)
-  .put('/members', requestMember, catchValidatorError, updateMember)
-  .delete('/members/:id', deleteMember)
+  .get('/members', validateToken, getAllMembers)
+  .get('/members/:document_id', validateToken, getByDiMember)
+  .post(
+    '/members',
+    validateToken,
+    requestMember,
+    catchValidatorError,
+    addMember
+  )
+  .put(
+    '/members',
+    validateToken,
+    requestMember,
+    catchValidatorError,
+    updateMember
+  )
+  .delete('/members/:id', validateToken, deleteMember)
 
 export default router

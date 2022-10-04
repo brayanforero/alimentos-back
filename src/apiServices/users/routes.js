@@ -8,14 +8,15 @@ import {
   getUserById,
   updateUser,
 } from './User.Controller.js'
+import { validateToken } from '../../auth/auth.middleware.js'
 
 const router = Router()
 
 router
-  .get('/users', getAllUsers)
-  .get('/users/:id', getUserById)
-  .post('/users', requestUser, catchValidatorError, addUser)
-  .put('/users', requestUser, catchValidatorError, updateUser)
-  .delete('/users/:id', deleteUser)
+  .get('/users', validateToken, getAllUsers)
+  .get('/users/:id', validateToken, getUserById)
+  .post('/users', validateToken, requestUser, catchValidatorError, addUser)
+  .put('/users', validateToken, requestUser, catchValidatorError, updateUser)
+  .delete('/users/:id', validateToken, deleteUser)
 
 export default router
