@@ -31,7 +31,7 @@ export const validateUser = async (req, res, next) => {
   }
 }
 
-export const validateToken = async (req, res, _next) => {
+export const validateToken = async (req, res, next) => {
   const bearerToken = req.headers['authorization']
 
   if (!bearerToken) {
