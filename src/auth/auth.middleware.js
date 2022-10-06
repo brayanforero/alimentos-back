@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken'
-import User from '../apiServices/users/User.Model.js'
+import User from '../apiServices/users/user.model.js'
 import { SECRET_KEY } from '../config/default.js'
 import { hashVerify } from '../utils/bhash.js'
 import { SERVER_INTERNAL_ERROR, UNAUTHORIZED } from '../utils/http.codes.js'
