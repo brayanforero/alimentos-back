@@ -1,8 +1,8 @@
 import { Router } from 'express'
-import { addSetting, getSetting, updateSetting } from './Setting.Controller.js'
+import { addSetting, getSetting, updateSetting } from './setting.controller.js'
 
 import catchValidatorError from '../../middlewares/catchValidatorError.js'
-import requestSetting from './Setting.Request.js'
+import requestSetting from './setting.request.js'
 import { validateToken } from '../../auth/auth.middleware.js'
 
 const router = Router()

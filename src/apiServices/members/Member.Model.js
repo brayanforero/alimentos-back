@@ -1,6 +1,6 @@
 import { DataTypes } from 'sequelize'
 import Store from '../../database/store.js'
-import User from '../users/User.Model.js'
+import User from '../users/user.model.js'
 
 const model = Store
 

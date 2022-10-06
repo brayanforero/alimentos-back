@@ -5,7 +5,7 @@ import {
   SERVER_INTERNAL_ERROR,
 } from '../../utils/http.codes.js'
 
-import Setting from './Setting.Model.js'
+import Setting from './setting.model.js'
 
 export const getSetting = async (_req, res) => {
   try {

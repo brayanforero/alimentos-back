@@ -1,5 +1,5 @@
-import Delivery from './Delivery.Model.js'
-import Member from '../members/Member.Model.js'
+import Delivery from './delivery.model.js'
+import Member from '../members/member.model.js'
 import { v1 as uuid } from 'uuid'
 import {
   CREATED,

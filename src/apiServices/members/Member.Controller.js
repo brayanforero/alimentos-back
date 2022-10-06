@@ -1,5 +1,5 @@
 import { NOT_FOUND, OK, SERVER_INTERNAL_ERROR } from '../../utils/http.codes.js'
-import Member from './Member.Model.js'
+import Member from './member.model.js'
 
 export const getAllMembers = async (_req, res, _next) => {
   try {

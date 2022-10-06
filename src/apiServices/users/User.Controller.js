@@ -1,5 +1,5 @@
-import User from './User.Model.js'
-import Member from '../members/Member.Model.js'
+import User from './user.model.js'
+import Member from '../members/member.model.js'
 import { hashGenerate } from '../../utils/bhash.js'
 import {
   CREATED,

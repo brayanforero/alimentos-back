@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import requestMember from './Member.Request.js'
+import requestMember from './member.request.js'
 import catchValidatorError from '../../middlewares/catchValidatorError.js'
 import {
   addMember,
@@ -7,7 +7,7 @@ import {
   getAllMembers,
   getByDiMember,
   updateMember,
-} from './Member.Controller.js'
+} from './member.controller.js'
 import { validateToken } from '../../auth/auth.middleware.js'
 
 const router = Router()
