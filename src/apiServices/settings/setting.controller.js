@@ -4,6 +4,7 @@ import {
   NOT_FOUND,
   SERVER_INTERNAL_ERROR,
 } from '../../utils/http.codes.js'
+import { loggerError } from '../../utils/loggers.js'
 
 import Setting from './setting.model.js'
 
@@ -16,6 +17,7 @@ export const getSetting = async (_req, res) => {
 
     res.json({ body: setting })
   } catch (err) {
+    loggerError(err)
     res.status(SERVER_INTERNAL_ERROR).json(err)
   }
 }
@@ -31,6 +33,7 @@ export const addSetting = async (_req, res) => {
     const settingCreated = await Setting.create(body)
     res.status(CREATED).json({ body: settingCreated })
   } catch (err) {
+    loggerError(err)
     res.status(SERVER_INTERNAL_ERROR).json(err)
   }
 }
@@ -47,6 +50,7 @@ export const updateSetting = async (_req, res) => {
     await setting.update(body)
     res.json({ body: setting })
   } catch (err) {
+    loggerError(err)
     res.status(SERVER_INTERNAL_ERROR).json(err)
   }
 }

@@ -1,4 +1,5 @@
 import { NOT_FOUND, OK, SERVER_INTERNAL_ERROR } from '../../utils/http.codes.js'
+import { loggerError } from '../../utils/loggers.js'
 import Member from './member.model.js'
 
 export const getAllMembers = async (_req, res, _next) => {
@@ -12,6 +13,7 @@ export const getAllMembers = async (_req, res, _next) => {
       body: { count: count, values: rows },
     })
   } catch (err) {
+    loggerError(err)
     res.status(SERVER_INTERNAL_ERROR).json(err)
   }
 }
@@ -33,6 +35,7 @@ export const getByDiMember = async (_req, res, _next) => {
       body,
     })
   } catch (err) {
+    loggerError(err)
     res.status(SERVER_INTERNAL_ERROR).json(err)
   }
 }
@@ -47,6 +50,7 @@ export const addMember = async (_req, res, _next) => {
       body: member,
     })
   } catch (err) {
+    loggerError(err)
     res.status(SERVER_INTERNAL_ERROR).json(err)
   }
 }
@@ -69,6 +73,7 @@ export const updateMember = async (_req, res, _next) => {
       body: member,
     })
   } catch (err) {
+    loggerError(err)
     res.status(SERVER_INTERNAL_ERROR).json(err)
   }
 }
@@ -91,6 +96,7 @@ export const deleteMember = async (_req, res, _next) => {
       body: 'Member deleted',
     })
   } catch (err) {
+    loggerError(err)
     res.status(SERVER_INTERNAL_ERROR).json(err)
   }
 }

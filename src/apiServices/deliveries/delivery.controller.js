@@ -6,6 +6,7 @@ import {
   NOT_FOUND,
   SERVER_INTERNAL_ERROR,
 } from '../../utils/http.codes.js'
+import { loggerError } from '../../utils/loggers.js'
 
 export const getAllDelivery = async (_req, res) => {
   try {
@@ -37,6 +38,7 @@ export const getAllDelivery = async (_req, res) => {
       body: { count, values: rows },
     })
   } catch (err) {
+    loggerError(err)
     res.status(SERVER_INTERNAL_ERROR).json(err)
   }
 }
@@ -54,6 +56,7 @@ export const addDelivery = async (req, res) => {
       body: delivery,
     })
   } catch (err) {
+    loggerError(err)
     res.status(SERVER_INTERNAL_ERROR).json(err)
   }
 }
@@ -72,6 +75,7 @@ export const closeDelivery = async (req, res) => {
       body: delivery,
     })
   } catch (err) {
+    loggerError(err)
     res.status(SERVER_INTERNAL_ERROR).json(err)
   }
 }

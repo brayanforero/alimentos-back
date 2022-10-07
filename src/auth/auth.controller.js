@@ -11,7 +11,7 @@ export const login = (req, res) => {
 
   try {
     const token = jwt.sign({ user }, SECRET_KEY, {
-      expiresIn: '10m',
+      expiresIn: '1h',
     })
 
     res.cookie('token', token, {
