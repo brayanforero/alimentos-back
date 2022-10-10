@@ -1,6 +1,7 @@
 import express from 'express'
 import morgan from 'morgan'
 import cookieParser from 'cookie-parser'
+import cors from 'cors'
 import { COOKIE_SECRET, PORT, MORGAN_MODE } from './config/default.js'
 import { routerV1 } from './routes/index.js'
 import { error404, errorServerInternal } from './middlewares/handleErrors.js'
@@ -14,6 +15,7 @@ app.use(
     extended: false,
   })
 )
+app.use(cors())
 
 // MIDDELWARES
 app.use(morgan(MORGAN_MODE))
