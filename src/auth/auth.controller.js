@@ -14,15 +14,18 @@ export const login = (req, res) => {
       expiresIn: '1h',
     })
 
-    res.cookie('token', token, {
-      httpOnly: true,
-      sameSite: true,
-      signed: true,
-      secure: true,
-    })
-    res.json({
-      token,
-    })
+    const Bearer = `Bearer ${token}`
+
+    res
+      .cookie('token', Bearer, {
+        httpOnly: true,
+        sameSite: true,
+        secure: true,
+      })
+      .json({
+        token,
+        user,
+      })
   } catch (err) {
     res.status(500).json({ err })
   }
