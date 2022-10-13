@@ -24,11 +24,11 @@
   "repositorio": "git@github.com:brayanforero/alimentos-back.git",
   "license": "MIT",
   "devDependencies": {
-    "eslint": "8.24.0",
+    "eslint": "8.25.0",
     "eslint-config-standard": "17.0.0",
     "eslint-plugin-import": "2.26.0",
     "eslint-plugin-n": "15.3.0",
-    "eslint-plugin-promise": "6.0.1",
+    "eslint-plugin-promise": "6.1.0",
     "nodemon": "2.0.20",
     "prettier": "2.7.1"
   },
@@ -37,12 +37,12 @@
     "cookie-parser": "1.4.6",
     "cors": "2.8.5",
     "dotenv": "16.0.3",
-    "express": "4.18.1",
+    "express": "4.18.2",
     "express-validator": "6.14.2",
     "jsonwebtoken": "8.5.1",
     "morgan": "1.10.0",
     "mysql2": "2.3.3",
-    "sequelize": "6.24.0",
+    "sequelize": "6.25.1",
     "uuid": "9.0.0"
   }
 }
