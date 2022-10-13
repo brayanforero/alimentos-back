@@ -3,6 +3,7 @@ import User from '../apiServices/users/user.model.js'
 import { SECRET_KEY } from '../config/default.js'
 import { hashVerify } from '../utils/bhash.js'
 import { SERVER_INTERNAL_ERROR, UNAUTHORIZED } from '../utils/http.codes.js'
+import { jwtMessage } from './utils.js'
 
 export const validateUser = async (req, res, next) => {
   const { body } = req
@@ -45,6 +46,7 @@ export const validateToken = async (req, res, next) => {
     req.user = user
     next()
   } catch (err) {
-    res.status(SERVER_INTERNAL_ERROR).json({ body: err })
+    const error = err ? jwtMessage[err.name] : 'Error token'
+    res.status(UNAUTHORIZED).json({ body: error })
   }
 }

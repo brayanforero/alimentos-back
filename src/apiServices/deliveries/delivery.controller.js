@@ -29,9 +29,6 @@ export const getAllDelivery = async (_req, res) => {
           },
         },
       ],
-      where: {
-        state: true,
-      },
     })
 
     res.json({
