@@ -6,6 +6,7 @@ import {
   deleteMember,
   getAllMembers,
   getByDiMember,
+  getLikeDiMember,
   updateMember,
 } from './member.controller.js'
 import { validateToken } from '../../auth/auth.middleware.js'
@@ -14,6 +15,7 @@ const router = Router()
 
 router
   .get('/members', validateToken, getAllMembers)
+  .get('/members/search', validateToken, getLikeDiMember)
   .get('/members/:document_id', validateToken, getByDiMember)
   .post(
     '/members',

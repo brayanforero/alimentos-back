@@ -1,3 +1,4 @@
+import { Op } from 'sequelize'
 import { NOT_FOUND, OK, SERVER_INTERNAL_ERROR } from '../../utils/http.codes.js'
 import { loggerError } from '../../utils/loggers.js'
 import Member from './member.model.js'
@@ -33,6 +34,28 @@ export const getByDiMember = async (_req, res, _next) => {
     res.status(code).json({
       status: code,
       body,
+    })
+  } catch (err) {
+    loggerError(err)
+    res.status(SERVER_INTERNAL_ERROR).json(err)
+  }
+}
+
+export const getLikeDiMember = async (_req, res, _next) => {
+  const { q } = _req.query
+
+  try {
+    const result = await Member.findAll({
+      where: {
+        cedula: {
+          [Op.like]: `${q}%`,
+        },
+        state: true,
+      },
+    })
+
+    res.json({
+      body: result,
     })
   } catch (err) {
     loggerError(err)
