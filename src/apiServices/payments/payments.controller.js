@@ -5,7 +5,7 @@ import { loggerError } from '../../utils/loggers.js'
 import Delivery from '../deliveries/delivery.model.js'
 
 export const addPay = async (req, res) => {
-  const { delivery_id, member_id, pay } = req.body
+  const { delivery_id, member_id, mount, is_paid, currency } = req.body
 
   try {
     const delivery = await Delivery.findByPk(delivery_id)
@@ -19,9 +19,9 @@ export const addPay = async (req, res) => {
       replacements: [
         delivery_id,
         member_id,
-        pay.is_paid,
-        pay.mount,
-        pay.currency,
+        is_paid,
+        mount,
+        currency,
       ],
       type: QueryTypes.INSERT,
     })
