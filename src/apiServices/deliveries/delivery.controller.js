@@ -25,6 +25,7 @@ export const getAllDelivery = async (_req, res) => {
               'is_paid',
               'mount',
               'currency',
+              'created_at',
             ],
           },
         },
