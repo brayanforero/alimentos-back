@@ -11,6 +11,10 @@ routerV1.get('/', (_req, res) => {
   res.send('WELCOME')
 })
 
+routerV1.get('/document', (_req, res) => {
+  res.render('pdf', { layout: false })
+})
+
 routerV1.use(routerAuth)
 routerV1.use(routesMembers)
 routerV1.use(routesUsers)

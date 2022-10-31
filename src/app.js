@@ -5,10 +5,30 @@ import cors from 'cors'
 import { COOKIE_SECRET, PORT, MORGAN_MODE } from './config/default.js'
 import { routerV1 } from './routes/index.js'
 import { error404, errorServerInternal } from './middlewares/handleErrors.js'
+import exphbs from 'express-handlebars'
+import path from 'path'
+import { fileURLToPath } from 'url'
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
 const app = express()
 
 // SETTINGS
 app.set('PORT', PORT)
+app.use(express.static(path.join(__dirname, 'public')))
+
+// VIEWS
+
+app.set('views', path.join(__dirname, 'views'))
+app.engine(
+  '.hbs',
+  exphbs.create({
+    defaultLayout: 'main',
+    extname: '.hbs',
+  }).engine
+)
+app.set('view engine', '.hbs')
+
+// MIDDELWARES
 app.use(express.json())
 app.use(
   express.urlencoded({
@@ -16,8 +36,6 @@ app.use(
   })
 )
 app.use(cors())
-
-// MIDDELWARES
 app.use(morgan(MORGAN_MODE))
 app.use(cookieParser(COOKIE_SECRET))
 
