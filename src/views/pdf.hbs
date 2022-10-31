@@ -2,6 +2,7 @@
   <head>
     <meta http-equiv='X-UA-Compatible' content='IE=Edge' />
     <meta charset='utf-8' />
+    <title>{{member.cedula}}</title>
     <!-- Begin shared CSS values -->
     <style class='shared-css' type='text/css'>
       .t { transform-origin: bottom left; z-index: 2; position: absolute;
@@ -15,10 +16,10 @@
     <style type='text/css'>
 
       #t1_1{left:151px;bottom:1152px;letter-spacing:0.2px;}
-      #t2_1{left:171px;bottom:1128px;letter-spacing:0.18px;word-spacing:-0.03px;}
+      #t2_1{left:171px;bottom:1128px;letter-spacing:0.16px;word-spacing:-0.03px;}
       #t3_1{left:495px;bottom:1128px;letter-spacing:0.2px;word-spacing:0.01px;}
       #t4_1{left:169px;bottom:1104px;letter-spacing:0.2px;word-spacing:-0.02px;}
-      #t5_1{left:644px;bottom:1104px;letter-spacing:0.18px;}
+      #t5_1{left:644px;bottom:1104px;letter-spacing:0.16px;}
       #t6_1{left:400px;bottom:1080px;letter-spacing:0.19px;}
       #t7_1{left:379px;bottom:973px;letter-spacing:-0.28px;}
       #t8_1{left:130px;bottom:890px;letter-spacing:0.38px;word-spacing:0.94px;}
@@ -34,12 +35,12 @@
       #ti_1{left:319px;bottom:525px;letter-spacing:0.19px;word-spacing:0.01px;}
       #tj_1{left:362px;bottom:481px;letter-spacing:0.17px;word-spacing:0.04px;}
       #tk_1{left:358px;bottom:437px;letter-spacing:0.2px;word-spacing:-0.03px;}
-      #tl_1{left:342px;bottom:394px;letter-spacing:0.18px;word-spacing:0.04px;}
-      .s1{font-size:18px;font-family:LiberationSans-Bold_6;color:#000;white-space:
+      #tl_1{left:342px;bottom:394px;letter-spacing:0.16px;word-spacing:0.04px;}
+      .s1{font-size:16px;font-family:LiberationSans-Bold_6;color:#000;white-space:
       nowrap;}
       .s2{font-size:28px;font-family:Carlito-Bold_g;color:#000;white-space:
       nowrap;}
-      .s3{font-size:18px;font-family:LiberationSans_b;color:#000;white-space:
+      .s3{font-size:16px;font-family:LiberationSans_b;color:#000;white-space:
       nowrap;}
     </style>
     <!-- End inline CSS -->
@@ -87,7 +88,7 @@
         <span id='t2_1' class='t s1'>CODIGO CLAPS-TAC-200303-00001, </span><span
           id='t3_1'
           class='t s1'
-        >HUGO CHAVEZ FRIAS, LOS </span>
+        >HUGO CHAVEZ FRIAS, LOS</span>
         <span id='t4_1' class='t s1'>PALMARES, PARROQUIA SAN PEDRO DEL RIO, DEL
         </span><span id='t5_1' class='t s1'>MUNICIPIO </span>
         <span id='t6_1' class='t s1'>AYACUCHO, </span>
@@ -101,10 +102,12 @@
           C.L.A.P.S- HUGO CHAVEZ FRIAS, hago
         </span>
         <span id='ta_1' class='t s3'>constar que la ciudadana;
-          <b>NEILA NATALY CHAVEZ CARREÑO</b>, con cedula de
+          <b>{{capitalize member.names}} {{capitalize member.lastnames}}</b>,
+          con cedula de
         </span>
         <span id='tb_1' class='t s3'>identidad Nº V-
-          <b>15.353.089</b>, no pertenece ni ha pertenecido a ningún grupo
+          <b>{{formatDoc member.cedula}}</b>, no pertenece ni ha pertenecido a
+          ningún grupo
         </span>
         <span id='tc_1' class='t s3'>familiar atendido por nuestro C.L.A.P.S,
           por lo cual no recibe bolsas de
@@ -113,7 +116,7 @@
         <span id='te_1' class='t s3'>Constancia que se da en Los Palmares a
         </span><span id='tf_1' class='t s3'>los diecinueve días del mes de
         </span>
-        <span id='tg_1' class='t s3'>septiembre del 2022 </span>
+        <span id='tg_1' class='t s3'>septiembre del 2022</span>
         <span id='th_1' class='t s3'>___________________________ </span>
         <span id='ti_1' class='t s3'>JESUS MARIA MEDINA PERNIA </span>
         <span id='tj_1' class='t s3'>CEDULA Nº 6.688.968 </span>
@@ -122,5 +125,10 @@
       <!-- End text definitions -->
 
     </div>
+
+    <script>
+
+      (() => { window.print() })()
+    </script>
   </body>
 </html>

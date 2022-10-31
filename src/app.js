@@ -2,14 +2,15 @@ import express from 'express'
 import morgan from 'morgan'
 import cookieParser from 'cookie-parser'
 import cors from 'cors'
-import { COOKIE_SECRET, PORT, MORGAN_MODE } from './config/default.js'
-import { routerV1 } from './routes/index.js'
-import { error404, errorServerInternal } from './middlewares/handleErrors.js'
 import exphbs from 'express-handlebars'
 import path from 'path'
+import { COOKIE_SECRET, PORT, MORGAN_MODE } from './config/default.js'
+import { error404, errorServerInternal } from './middlewares/handleErrors.js'
+import { routerV1 } from './routes/index.js'
 import { fileURLToPath } from 'url'
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
+import { formatDoc, capitalize } from './utils/hbs.js'
 const app = express()
 
 // SETTINGS
@@ -23,7 +24,10 @@ app.engine(
   '.hbs',
   exphbs.create({
     defaultLayout: 'main',
-    extname: '.hbs',
+    helpers: {
+      formatDoc,
+      capitalize,
+    },
   }).engine
 )
 app.set('view engine', '.hbs')
