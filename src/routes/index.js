@@ -7,7 +7,7 @@ import routesUsers from '../apiServices/users/routes.js'
 import routerPayments from '../apiServices/payments/routes.js'
 import Member from '../apiServices/members/member.model.js'
 
-import { SERVER_INTERNAL_ERROR } from '../utils/http.codes.js'
+import { BAD_REQUEST, SERVER_INTERNAL_ERROR } from '../utils/http.codes.js'
 const routerV1 = Router()
 routerV1.get('/', (_req, res) => {
   res.send('WELCOME')
@@ -18,6 +18,8 @@ routerV1.get('/document/:id', (req, res) => {
 
   Member.findByPk(id)
     .then((m) => {
+      if (!m) return res.render('404', { layout: false })
+
       res.render('pdf', { member: m.dataValues, layout: false })
     })
     .catch((e) => res.status(SERVER_INTERNAL_ERROR, { body: e }))
