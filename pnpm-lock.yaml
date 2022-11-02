@@ -4,6 +4,7 @@ specifiers:
   bcryptjs: 2.4.3
   cookie-parser: 1.4.6
   cors: 2.8.5
+  dayjs: 1.11.6
   dotenv: 16.0.3
   eslint: 8.26.0
   eslint-config-standard: 17.0.0
@@ -25,6 +26,7 @@ dependencies:
   bcryptjs: 2.4.3
   cookie-parser: 1.4.6
   cors: 2.8.5
+  dayjs: 1.11.6
   dotenv: 16.0.3
   express: 4.18.2
   express-handlebars: 6.0.6
@@ -383,6 +385,10 @@ packages:
       shebang-command: 2.0.0
       which: 2.0.2
     dev: true
+
+  /dayjs/1.11.6:
+    resolution: {integrity: sha512-zZbY5giJAinCG+7AGaw0wIhNZ6J8AhWuSXKvuc1KAyMiRsvGQWqh4L+MomvhdAYjN+lqvVCMq1I41e3YHvXkyQ==}
+    dev: false
 
   /debug/2.6.9:
     resolution: {integrity: sha512-bC7ElrdJaJnPbAP+1EotYvqZsb3ecl5wi6Bfi6BJTUcNowp6cvspg0jXznRTKDjm/E7AdgFBVeAPVMNcKGsHMA==}

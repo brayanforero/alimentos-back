@@ -14,3 +14,9 @@ export const capitalize = (str) => {
 
   return strFormatted
 }
+
+export const parseSegmentDay = (day = 1) => {
+  const number = parseInt(day)
+
+  return number > 1 ? `a los ${number} días` : `el primer día`
+}

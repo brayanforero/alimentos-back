@@ -10,7 +10,7 @@ import { routerV1 } from './routes/index.js'
 import { fileURLToPath } from 'url'
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
-import { formatDoc, capitalize } from './utils/hbs.js'
+import { formatDoc, capitalize, parseSegmentDay } from './utils/hbs.js'
 const app = express()
 
 // SETTINGS
@@ -27,6 +27,7 @@ app.engine(
     helpers: {
       formatDoc,
       capitalize,
+      parseSegmentDay,
     },
   }).engine
 )
